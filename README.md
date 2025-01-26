@@ -1,4 +1,4 @@
-<a href="https://garaven.vercel.app"><img src="./src/assets/images/readme.png" alt="Portfolio displayed on different devices" width="100%"></a>
+<a href="https://garaven.vercel.app"><img src="./public/images/readme.png" alt="Portfolio displayed on different devices" width="100%"></a>
 <hr>
 <div align="center">
   <img src="https://img.shields.io/badge/Astro-0C1222?style=for-the-badge&logo=astro&logoColor=FDFDFE">
