@@ -5,10 +5,13 @@ import ContainerHover from "@components/ContainerHover.astro"
 import Linkedin from "@assets/icons/linkedin.astro"
 import Record from "@assets/icons/record.astro"
 import Bluesky from "@assets/icons/bluesky.astro"
+import Home from "@assets/icons/home.astro"
 ---
 
 <nav class="w-full flex justify-between items-center">
-  <span class="text-xl">@yarsrvenge</span>
+  <ContainerHover link="/" alt="Home" newTab={false}>
+    <Home />
+  </ContainerHover>
   <div class="flex gap-3 items-center">
     <ContainerHover link="mailto:gus.branchesi@gmail.com" alt="Email">
       <Email />
