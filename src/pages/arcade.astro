@@ -7,17 +7,75 @@ import ProjectsSection from '@components/ProjectsSection.astro';
 import SkillsSection from '@components/SkillsSection.astro';
 import FinalSection from '@components/FinalSection.astro';
 ---
-
-<Layout title="Home Arcade Project">
+<Layout title="Home Multicade Project">
   <div class="min-w-[535px] max-w-screen-sm mx-auto py-16 px-8 selection:bg-gray-600 selection:text-white">
     <header>
       <Navbar />
       <ProfileSection />
     </header>
     <main>
-      <AboutSection />
-      <ProjectsSection />
-      <SkillsSection />
+      <section class="my-20">
+        <h2 class="text-2xl font-semibold mb-1">Modernizing a Legends Ultimate Arcade Cabinet</h2>
+        <hr class="mb-4 border-zinc-600">
+        <div class="my-8 flex flex-col items-center">
+          <img 
+            src="/images/arcade.png" 
+            alt="Legends Ultimate Arcade Cabinet with Pixelcade LCD marquee showing 'RETRO ARCADE' and the main screen displaying game selection menu" 
+            class="rounded-lg shadow-md max-w-full h-auto"
+          />
+          <p class="text-sm text-zinc-500 mt-2 text-center">The modified Legends Ultimate cabinet with custom Pixelcade marquee and Batocera frontend</p>
+        </div>
+        <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">I recently completed a full overhaul of a <strong>Legends Ultimate arcade cabinet</strong>, transforming it into a powerful all-in-one retro and modern gaming machine. This project involved gutting the original internals and replacing them with a compact but powerful PC running <strong>Batocera Linux</strong>.</p>
+      </section>
+
+      <section class="my-20">
+        <h2 class="text-2xl font-semibold mb-1">What's Inside?</h2>
+        <hr class="mb-4 border-zinc-600">
+        <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">At the heart of the system is a <strong>Venus UM790 Pro</strong> (or UM760 Pro), a small-form-factor Ryzen-powered PC that handles everything from classic arcade games to modern Steam titles with ease. It boots into Batocera by default, giving me access to a wide array of emulators and a custom front-end.</p>
+      </section>
+
+      <section class="my-20">
+        <h2 class="text-2xl font-semibold mb-1">Systems Supported</h2>
+        <hr class="mb-4 border-zinc-600">
+        <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">Batocera has been configured to emulate a wide range of systems, including:</p>
+        <ul class="list-disc pl-5 text-zinc-400 leading-8 text-lg">
+          <li>Arcade (MAME, FinalBurn Neo, etc.)</li>
+          <li>Atari 2600</li>
+          <li>Intellivision</li>
+          <li>Colecovision</li>
+          <li>Game Boy</li>
+          <li>NES / SNES / N64</li>
+          <li>PlayStation 1, 2, and even 3</li>
+          <li>Original Xbox</li>
+          <li>Commodore 64</li>
+          <li>PC games via Steam (Windows dual boot)</li>
+        </ul>
+      </section>
+
+      <section class="my-20">
+        <h2 class="text-2xl font-semibold mb-1">Modern Features in a Retro Shell</h2>
+        <hr class="mb-4 border-zinc-600">
+        <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">While the cabinet keeps its original display, I've made several upgrades to enhance the experience:</p>
+        <ul class="list-disc pl-5 text-zinc-400 leading-8 text-lg">
+          <li>Two <strong>Sinden Light Guns</strong> for light gun arcade games</li>
+          <li>A <strong>wireless PS2 controller</strong> option for modern console-style gaming</li>
+          <li>A <strong>3D printed coin door</strong> (which required a cabinet cutout) for authentic arcade vibes</li>
+          <li>A <strong>Pixelcade LCD marquee</strong> that dynamically updates with game artwork using Linux scripts</li>
+          <li>Custom themes for the Batocera front-end to match the retro aesthetic</li>
+        </ul>
+      </section>
+
+      <section class="my-20">
+        <h2 class="text-2xl font-semibold mb-1">Boot Flexibility</h2>
+        <hr class="mb-4 border-zinc-600">
+        <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">The system uses <strong>GRUB</strong> to dual boot between Batocera and Windows. This allows me to run PC-based arcade software like <strong>TeknoParrot</strong> using <strong>LaunchBox</strong> for an expanded library of modern arcade titles.</p>
+      </section>
+
+      <section class="my-20">
+        <h2 class="text-2xl font-semibold mb-1">Final Thoughts</h2>
+        <hr class="mb-4 border-zinc-600">
+        <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">This project turned the Legends Ultimate into a true multi-system beast—equally at home running <em>Pac-Man</em> as it is running <em>Tekken 7</em>. Whether you're a casual gamer or a hardcore retro enthusiast, the blend of classic looks and cutting-edge internals makes this cabinet something special.</p>
+      </section>
     </main>
     <footer>
       <FinalSection />
