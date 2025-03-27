@@ -1,0 +1,64 @@
+---
+import Layout from '@layouts/Layout.astro';
+import Navbar from '@components/Navbar.astro';
+import ProfileSection from '@components/ProfileSection.astro';
+import AboutSection from '@components/AboutSection.astro';
+import ProjectsSection from '@components/ProjectsSection.astro';
+import SkillsSection from '@components/SkillsSection.astro';
+import FinalSection from '@components/FinalSection.astro';
+---
+<Layout title="Doom for tvOS Project">
+  <div class="min-w-[535px] max-w-screen-sm mx-auto py-16 px-8 selection:bg-gray-600 selection:text-white">
+    <header>
+      <Navbar />
+      <ProfileSection />
+    </header>
+    <main>
+      <section class="my-20">
+        <h2 class="text-2xl font-semibold mb-1">Doom for tvOS Running!</h2>
+        <hr class="mb-4 border-zinc-600">
+        <div class="my-8 flex flex-col items-center">
+          <img 
+            src="/images/doomdesktop.jpg" 
+            alt="Doom running on Apple TV with game controller" 
+            class="rounded-lg shadow-md max-w-full h-auto"
+          />
+          <p class="text-sm text-zinc-500 mt-2 text-center">Doom running on Apple TV with game controller support</p>
+        </div>
+        <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">While a couple of people have got Doom running on tvOS, they either have not released source code, or did not have it running on more recent SDK's and buildable in Xcode 8. I haven't seen anyone implement game controller support either.</p>
+      </section>
+
+      <section class="my-20">
+        <h2 class="text-2xl font-semibold mb-1">Implementation Details</h2>
+        <hr class="mb-4 border-zinc-600">
+        <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">I've managed to get it running with game controller support under Xcode 8. I used a fork of John Carmack's original code as a starting point. The code has not been updated in a while and did not support 64 bit architecture let alone the latest iOS / tvOS framework versions. I created the targets for tvOS and have been making several changes to allow it to run.</p>
+        <div class="my-8 flex flex-col items-center">
+          <iframe width="500" height="281" src="https://www.youtube.com/embed/Ydh_z8pMB9Y?feature=oembed" frameborder="0" allowfullscreen class="rounded-lg shadow-md"></iframe>
+          <p class="text-sm text-zinc-500 mt-2 text-center">Video demonstration of Doom running on Apple TV</p>
+        </div>
+      </section>
+
+      <section class="my-20">
+        <h2 class="text-2xl font-semibold mb-1">Asset Management</h2>
+        <hr class="mb-4 border-zinc-600">
+        <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">The fork I used as a starting point expects the user to grab image assets and the WAD files from the paid version of iOS Doom. I don't see a reason to use the image assets iD used from the paid version, so I am in the process of using assets that were not included by iD in the menus and so forth. That way, as long as someone has the WAD file from the paid version (I've bought it MANY, MANY times over the years) and a Mac they can sideload the project from Github in Xcode, add the WAD file and get it up and running pretty easily. It also allows me to use assets that are higher resolution for the menus. Currently, this is all gitignored so as not to violate licensing.</p>
+      </section>
+
+      <section class="my-20">
+        <h2 class="text-2xl font-semibold mb-1">Current Status and Known Issues</h2>
+        <hr class="mb-4 border-zinc-600">
+        <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">While I do have it running, there are definitely some bugs. The menus need to be reworked for Apple TV, not all menu option are wired in yet, multiplayer is broken and there are some sound issues / crashes. The current code uses AudioToolbox which was deprecated a while ago and that piece needs to be rewritten to use AVAudioPlayer. I also need to get rid of some of the button overlays used for iOS since they are not needed. Once I get some of this cleaned up I will post the Github location and include better instructions. Please be patient, this is a part-time project and I am a busy guy.</p>
+      </section>
+
+      <section class="my-20">
+        <h2 class="text-2xl font-semibold mb-1">Source Code</h2>
+        <hr class="mb-4 border-zinc-600">
+        <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">You can find the source code on <a target="_blank" rel="noopener noreferrer" href="https://github.com/yarsrvenge/DOOM-IOS2" class="text-zinc-100 hover:underline">Github</a>.  This is an old project (over 8 years old).</p>
+      </section>
+
+    </main>
+    <footer>
+      <FinalSection />
+    </footer>
+  </div>
+</Layout>
