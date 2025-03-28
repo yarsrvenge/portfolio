@@ -1,0 +1,272 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Navbar from "@components/Navbar.astro";
+import ProfileSection from "@components/ProfileSection.astro";
+import AboutSection from "@components/AboutSection.astro";
+import ProjectsSection from "@components/ProjectsSection.astro";
+import SkillsSection from "@components/SkillsSection.astro";
+import FinalSection from "@components/FinalSection.astro";
+---
+
+<Layout title="Creating an Alexa Skill for Astronomical Observations">
+  <div
+    class="min-w-[535px] max-w-screen-sm mx-auto py-16 px-8 selection:bg-gray-600 selection:text-white"
+  >
+    <header>
+      <Navbar />
+      <ProfileSection />
+    </header>
+    <main>
+      <section class="my-20">
+        <h2 class="text-2xl font-semibold mb-1">
+          Creating an Alexa Skill for Astronomical Observations
+        </h2>
+        <hr class="mb-4 border-zinc-600" />
+        <div class="my-8 flex flex-col items-center">
+          <img
+            src="/images/skygaze-header.jpg"
+            alt="Alexa device with starry sky background"
+            class="rounded-lg shadow-md max-w-full h-auto"
+          />
+          <p class="text-sm text-zinc-500 mt-2 text-center">
+            Skygaze Alexa Skill for astronomical observations
+          </p>
+        </div>
+        <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
+          Back in 2017, I created this Alexa app just as Amazon had started to release its tools. This project is very dated with the advent of foundational models, but the concepts could easily be implemented in a multi-agent model. Maybe another project on the horizon!
+        </p>
+        <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
+          I created a proof-of-concept skill for the company I work for, Taylor Digital, that allows the creation/completion of an omni-channel order as well as order status and store lookup for eCommerce, but I wanted to create something I could actually release in the skills store to get some experience with the entire approval process. This is a small write-up about it and some of the things I have learned from working with the Alexa Skills SDK. While some of this is specific to writing Alexa skills, many of these concepts also apply to other speech recognition systems like Google Home.
+        </p>
+      </section>
+
+      <section class="my-20">
+        <h2 class="text-2xl font-semibold mb-1">Purpose of the Skygaze Skill</h2>
+        <hr class="mb-4 border-zinc-600" />
+        <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
+          The skill is useful for people who just want to quickly figure out if they can go outside and catch a glimpse of a celestial object, whether it is with the naked eye, binoculars or lugging their heavy telescope outside. There are plenty of apps to do this, but a smart speaker device like Alexa offers a very quick way to get this information. It will also give specific information on where an object is relative to the observer's location!
+        </p>
+        <div class="my-8 flex flex-col items-center">
+          <iframe 
+            width="500" 
+            height="281" 
+            src="https://www.youtube.com/embed/K9PjZGEpMGI" 
+            title="Alexa Skygaze Skill" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            referrerpolicy="strict-origin-when-cross-origin" 
+            allowfullscreen
+            class="rounded-lg shadow-md">
+          </iframe>
+          <p class="text-sm text-zinc-500 mt-2 text-center">
+            Video demonstration of the Skygaze Alexa Skill
+          </p>
+        </div>
+        <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
+          Years ago, when the first iPhone came out, I created a mobile web app called iSkygaze that provided this information. This was before the App Store and native apps existed. The web app was popular and was even featured by Apple. Since then, some very capable native apps for astronomy like Star Walk have been released, so I put it in the "old code" bin. For the "Skygaze" skill, I utilized the same core algorithms I coded years ago, translating them from C# to Node.js (Javascript).
+        </p>
+        <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
+          Having a clear idea of what you are trying to accomplish with your skill and focusing on the intents of the user is important.
+        </p>
+      </section>
+
+      <section class="my-20">
+        <h2 class="text-2xl font-semibold mb-1">The Math Behind the Skill</h2>
+        <hr class="mb-4 border-zinc-600" />
+        <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
+          Imagine standing at the center of a transparent earth. As you look around, every object in the sky can be mapped to some point on this imaginary sphere of space. In astronomy, we refer to an object's location in the sky by its right ascension (RA) and declination (DEC) which correlate to a point on this sphere. These two values together are called an ephemeris.
+        </p>
+        <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
+          Deep sky objects like distant stars and nebulas that are very, very far away don't change position over a very long period of time, so the RA and DEC stay the same. If you've ever looked out the side window of a car as you are driving, you notice that landmarks very far away don't really move that much. Objects that are closer move position much faster. This is the same concept.
+        </p>
+        <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
+          Objects in our solar system are much closer, relatively speaking, and also orbit the sun. As a result, their RA/DEC have to be calculated more frequently based on the current date and time so I perform these calculations every time the skill is invoked. Determining the current ephemeris for a planet is done using a number of algorithms starting with the objects orbital elements. These define how an object orbits the sun.
+        </p>
+        <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
+          Once you have the ephemeris calculated, the last step is deriving the altitude and azimuth based on the observers position.
+        </p>
+        <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
+          All the algorithms I used were based on an awesome article by Paul Schlyter. It has been around a while and is the basis for many astronomy programs you find on the web. If you are curious about the details, please visit this link:
+        </p>
+        <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
+          <a href="http://www.stjarnhimlen.se/comp/ppcomp.html" target="_blank" rel="nofollow noopener noreferrer" class="text-zinc-100 hover:underline">Computing Planetary Positions</a>
+        </p>
+        <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
+          Javascript has the basic trigonometry functions needed for all these calculations so we are covered there. Accuracy is very good, within a couple of arc minutes which is more than fine for someone trying to get a general idea where something can be seen.
+        </p>
+      </section>
+
+      <section class="my-20">
+        <h2 class="text-2xl font-semibold mb-1">Development Environment</h2>
+        <hr class="mb-4 border-zinc-600" />
+        <div class="my-8 flex flex-col items-center">
+          <img
+            src="/images/skygaze-development.gif"
+            alt="Development environment for the Skygaze Alexa Skill"
+            class="rounded-lg shadow-md max-w-full h-auto"
+          />
+          <p class="text-sm text-zinc-500 mt-2 text-center">
+            Development environment for the Skygaze Alexa Skill
+          </p>
+        </div>
+        <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
+          When developing conversational UX there are a variety of ways to develop a solution. Alexa, Facebook, Google etc have SDK's that allow you to develop against that particular solution. Skygaze was written entirely using node.js running on Amazon's lambda service. It also utilizes the Dynamo NOSQL DB for persisting the users zip code so I don't have to ask for it each time.
+        </p>
+        <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
+          You can also develop your conversational UI using a natural language platform like API.AI and then host your backend code wherever you want. I have already taken the Skygaze code and ported it over to follow the API.AI webhook specifications. You can see in the image above Skygaze running as a bot in Facebook Messenger! Once I tweak this a little, I will release this Facebook bot as well. The nice thing about developing a solution in API.AI is that you can easily deploy it to multiple bot platforms like Slackbot, Skype, Google Home, etc. I'll write this up in a future article.
+        </p>
+        <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
+          Platforms like API.AI and GupShup aren't really bot building platforms, they are natural language platforms that help determine the intent of the user and map it to an action. All the actual work in crafting responses is done using your backend code.
+        </p>
+      </section>
+
+      <section class="my-20">
+        <h2 class="text-2xl font-semibold mb-1">Designing the Speech Interface</h2>
+        <hr class="mb-4 border-zinc-600" />
+        <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
+          An intent is what a user is intending to do. There may be multiple ways you can ask for something, but they can relate to one intent if you desire. There may also may be some occasions that require you to use a single programmatic "intent" for more than one "user" intent. I'll explain more about this in a moment.
+        </p>
+        <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
+          There are limitations with Alexa's speech interface and recognition which is reason alone to keep things simple. Regardless, we want to keep the interface and response as focused, clear and concise as possible. People do not want to remember long utterances or get back so much information it overloads them. Early on, I decided to focus on two user intents:
+        </p>
+        <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
+          <strong>"What can I see from my location now?"</strong>: For this intent, I just want to tell the user what is currently above the horizon, a general location of each object and if the sun is still lighting the sky impacting observations. Typically, you want to keep the response short and concise. They can always ask about a specific object for more information later. I also make use of Alexa cards on the users phone or tablet to display more details than I provide via speech.
+        </p>
+        <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
+          <strong>"Where or when can I see a specific object?"</strong>: For this intent, I can give specific information. When the object will rise and set, the best time to see it along with where it is in the sky.
+        </p>
+        <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
+          When you create an "intent", you also configure the Alexa developer portal with the utterances that are mapped to that intent. For example, to retrieve what is currently in the sky, all of these utterances map to the same intent:
+        </p>
+        <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
+          SkyIntent: Ask sky gaze, What can I see from &#123;zip code&#125;<br>
+          SkyIntent: Ask sky gaze what I can see from &#123;zip code&#125;<br>
+          SkyIntent: Ask sky gaze, Whats visible in the sky from &#123;zip code&#125;
+        </p>
+        <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
+          The word in brackets is called a slot. You define what kind of words can be passed in this slot. It can be a list of words you specify or a pre-existing slot type that is available from Amazon like US Cities, a Number, Yes/No, Movie Names, Actors, etc.
+        </p>
+      </section>
+
+      <section class="my-20">
+        <h2 class="text-2xl font-semibold mb-1">Intent Slot Limitations</h2>
+        <hr class="mb-4 border-zinc-600" />
+        <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
+          An intent may have more than one slot, but be forewarned that Alexa is not terribly great at having two slots in one intent if there are no words between them. Also, if you have a lot of intents that have the same kind of slot data you will run into situations where Alexa goes to the wrong intent. Here is an example of something that might not be good for several reasons:
+        </p>
+        <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
+          Sky Intent: What can I see from &#123;US City NAME&#125;<br>
+          CurrentLocationIntent: Where is &#123;SOLAR SYSTEM OBJECT&#125; now relative to &#123;US CITY NAME&#125;<br>
+          FutureLocationIntent: When is &#123;SOLAR SYSTEM OBJECT&#125; visible to &#123;US CITY NAME&#125;
+        </p>
+        <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
+          <strong>Problem 1:</strong> There are three different intents using three of the same slots and two using two of the same slots. If a user just says "When is Jupiter visible", you would check for the fact a location is not there and ask the user for it. When you do this, Alexa doesn't know what caused this prompt to be initiated. She just sees they provided a US CITY. As a result, she may not route the user to the correct intent.
+        </p>
+        <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
+          <strong>Solution:</strong> You could write a complex system of tracking whether an intent was initiated before the prompt and trap a request to a different flow using session attributes. Amazon even has a simple way of persisting session attributes after the session is over using their NOSQL database Dynamo. A better solution, frankly, is to just simplify our skill by combining CurrentLocation and BestLocation into one intent….or even combining all three into one intent. We know that if a person provides a solar system object, they are trying to get planetary details. If not, we know they are just looking for all objects in the sky.
+        </p>
+        <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
+          <strong>Problem 2:</strong> When you use the US City Name slot, if it was not passed in as part of the utterance, Alexa shows that slot as empty when calling your intent.
+        </p>
+        <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
+          <strong>Solution:</strong> I don't know if this is a bug with the Alexa system or simply because there are so many cities she cannot guarantee it was correct, but it does not work properly.
+        </p>
+        <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
+          <strong>Solution:</strong> I used a zip code for location and that works as intended.
+        </p>
+      </section>
+
+      <section class="my-20">
+        <h2 class="text-2xl font-semibold mb-1">Lack of Location Services</h2>
+        <hr class="mb-4 border-zinc-600" />
+        <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
+          For security reasons, Alexa does not allow you to obtain the end users location automatically which can be annoying for some skills. Oddly enough, some skills by major developers like Uber do get this…so they must have some kind of "special arrangement" accessing a private API. That means regular developers like me have to ask the user for their location. It would have been great if I didn't even have to ask for that and automatically used their location. Doing an IP lookup will not work because the node.js code runs in Amazon's cloud, not the device itself.
+        </p>
+        <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
+          If you are building a skill that requires the user to authenticate to your system before they use the skill, you could pull their location and other information from their profile in your system automatically. For the "Skygaze" skill, I did not want to complicate the installation and setting up the skill. It is overkill for an app like this.
+        </p>
+      </section>
+
+      <section class="my-20">
+        <h2 class="text-2xl font-semibold mb-1">No Dynamic Custom Slots</h2>
+        <hr class="mb-4 border-zinc-600" />
+        <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
+          I mentioned earlier that if you are creating custom slots with a specific set of values like "Jupiter, Mars, Moon, etc", you have to configure these in the Alexa portal. You cannot define the values of custom slots dynamically through your code. The good news is that the list of values can be very, very long if you have the time, foresight and patience. Always look to see if there is a pre-existing slot type that has the information you are trying to grab. For example, if you need the user to be able to provide a location (city), Amazon has a predefined slot type for this already. You will not need to create one and manually enter in 150,000 US cities 🙂 I had to use zip code because I found that solar system objects like "Jupiter" would cause conflicts with city names or Alexa would return a blank slot value.
+        </p>
+      </section>
+
+      <section class="my-20">
+        <h2 class="text-2xl font-semibold mb-1">Alexa Cards are Useful but Handicapped</h2>
+        <hr class="mb-4 border-zinc-600" />
+        <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
+          Alexa Cards are displayed in the Alexa app (if you choose) after you process what the user says. For my app, I tried to give the important pieces of information via speech but keep the details in the card for them to refer to later if they like. A casual user does not need to know the RA/DEC for an object so why speak it to them. You may notice that some Amazon functions have lots of fancy formatting in their cards. This is not the case for a normal third-party developer. You can include one image (make sure you enable the CORS header) and some text without any HTML formatting. You are limited to forcing new lines only.
+        </p>
+      </section>
+
+      <section class="my-20">
+        <h2 class="text-2xl font-semibold mb-1">Flow Control / Accessing Web Services</h2>
+        <hr class="mb-4 border-zinc-600" />
+        <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
+          My skill uses external web services (Google's Geocode and Timezone API) only to get the latitude, longitude and time zone of the location the user speaks to Alexa. All the other content is calculated using astronomical algorithms in the Node.js code as I mentioned above. Because I am only making two REST API calls, I did not feel it was required to use some method of flow control like ASYNC or Promises. If you are doing any major consumption of REST API's, I would recommend trying to use something or you will end up with what Javascript programmers affectionately call "CallBack Hell".
+        </p>
+      </section>
+
+      <section class="my-20">
+        <h2 class="text-2xl font-semibold mb-1">Approval Process</h2>
+        <hr class="mb-4 border-zinc-600" />
+        <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
+          If you are accustomed to the approval process with Apple, this is fairly similar but a little quicker. My skill was initially rejected after two days of review for some minor infractions which is very common. Here are some easy things to look out for before publishing a skill:
+        </p>
+        <ul class="list-disc pl-5 text-zinc-400 leading-8 text-lg">
+          <li>Make sure you handle the user canceling, exiting or asking for help at any time in your flow. This is easily handled with the AMAZON.StopIntent, AMAZON.CancelIntent and AMAZON.Help built-in intents.</li>
+          <li>Ensure you handle invalid values being passed into your slots. Alexa will sometimes get things wrong, even if you are using a custom slot. A comical example of this was when saying "Venus" for my space_object class, Alexa sometimes passed "penis" even though I had a clearly defined list of allowed values for that custom slot.</li>
+          <li>Think about all the ways someone might want to invoke your skill's intents and make sure you have utterances to cover those. I recommend going through the entire Amazon checklist.</li>
+        </ul>
+      </section>
+
+      <section class="my-20">
+        <h2 class="text-2xl font-semibold mb-1">Future Enhancements</h2>
+        <hr class="mb-4 border-zinc-600" />
+        <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
+          As always, there are a lot of things I would like to add in the future which are all possible:
+        </p>
+        <ul class="list-disc pl-5 text-zinc-400 leading-8 text-lg">
+          <li>Multi-language support</li>
+          <li>Better Alexa Cards with pictures of the current sky from that location</li>
+          <li>Use a weather service to determine if conditions are good for observations</li>
+          <li>Deep sky objects. These are easy to add, but it needs to be a limited number of the catalog. I'd like to add some basic ones that are easy to spot. Maybe constellations?</li>
+          <li>Take other factors into account for visibility including how bright the moon is, and a calculated apparent magnitude.</li>
+        </ul>
+      </section>
+
+      <section class="my-20">
+        <h2 class="text-2xl font-semibold mb-1">My Astronomy Equipment</h2>
+        <hr class="mb-4 border-zinc-600" />
+        <div class="my-8 flex flex-col items-center">
+          <img
+            src="/images/skygaze-equipment.jpeg"
+            alt="Meade ETX-125 telescope"
+            class="rounded-lg shadow-md max-w-full h-auto"
+          />
+          <p class="text-sm text-zinc-500 mt-2 text-center">
+            Meade ETX-125 telescope
+          </p>
+        </div>
+        <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
+          I've been using the skill to test by planning my own observations and it has worked well. I have an old Meade ETX-125 and a nice pair of Celestron binoculars I use for viewing. I would love to get a Meade LX-90 ACF at some point, it is just a little pricey for me right now. Great technology though, and for someone as busy as myself it would be great to be able to spend less time setting up and more time observing.
+        </p>
+      </section>
+
+      <section class="my-20">
+        <h2 class="text-2xl font-semibold mb-1">Summary</h2>
+        <hr class="mb-4 border-zinc-600" />
+        <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
+          Alexa's user base is growing, but as with native mobile apps people are quick to "catch and release". If your skill is too complex or unreliable, it will likely not be used for long. One of the nice things about Alexa is installing a skill is as simple as saying "Alexa, enable the &#123;skill name&#125; skill".
+        </p>
+      </section>
+    </main>
+    <footer>
+      <FinalSection />
+    </footer>
+  </div>
+</Layout>
