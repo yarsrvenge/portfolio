@@ -1,0 +1,305 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Navbar from "@components/Navbar.astro";
+import ProfileSection from "@components/ProfileSection.astro";
+import AboutSection from "@components/AboutSection.astro";
+import ProjectsSection from "@components/ProjectsSection.astro";
+import SkillsSection from "@components/SkillsSection.astro";
+import FinalSection from "@components/FinalSection.astro";
+---
+
+<Layout title="VR 6DOF Proof-of-Concept">
+    <div
+        class="min-w-[535px] max-w-screen-sm mx-auto py-16 px-8 selection:bg-gray-600 selection:text-white"
+    >
+        <header>
+            <Navbar />
+            <ProfileSection />
+        </header>
+        <main>
+            <section class="my-20">
+                <h2 class="text-2xl font-semibold mb-1">
+                    VR 6DOF Proof-of-Concept
+                </h2>
+                <hr class="mb-4 border-zinc-600" />
+                <div class="my-8 flex flex-col items-center">
+                    <img
+                        src="/images/vr-poc-header.gif"
+                        alt="VR 6DOF Proof-of-Concept demonstration"
+                        class="rounded-lg shadow-md max-w-full h-auto"
+                    />
+                    <p class="text-sm text-zinc-500 mt-2 text-center">
+                        Virtual Reality Proof-of-Concept
+                    </p>
+                </div>
+                <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
+                    In the summer of 2019, I decided to work on a Virtual
+                    Reality 6DOF (six degrees of freedom) proof-of-concept. This
+                    POC took between 30-40 hours, an hour or two in the evenings
+                    here and there over the course of a few weeks. Here is a
+                    video demonstration.
+                </p>
+                <div class="my-8 flex flex-col items-center">
+                    <iframe
+                        width="560"
+                        height="315"
+                        src="https://www.youtube.com/embed/2-utLyy_3PI"
+                        title="KLIC Photo / Lifepics VR 6DOF Proof of Concept on Oculus Quest"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin"
+                        allowfullscreen
+                        class="rounded-lg shadow-md"></iframe>
+                    <p class="text-sm text-zinc-500 mt-2 text-center">
+                        Video demonstration of the VR 6DOF Proof-of-Concept
+                    </p>
+                </div>
+            </section>
+
+            <section class="my-20">
+                <h2 class="text-2xl font-semibold mb-1">Key Goals</h2>
+                <hr class="mb-4 border-zinc-600" />
+                <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
+                    The key things I was trying to prove were that with newer
+                    6DOF room-scale VR systems:
+                </p>
+                <ul class="list-disc pl-5 text-zinc-400 leading-8 text-lg">
+                    <li>
+                        Can we build a compelling experience based on user
+                        photos with a resolution quality that makes it engaging?
+                        Up until now, resolution in mobile VR has been mediocre at best.
+                    </li>
+                    <li>
+                        Can we configure a product realtime and make the 3D
+                        model accurate enough to match what is produced as well
+                        as realistic enough for someone to actually order it all
+                        within VR?
+                    </li>
+                    <li>
+                        What is the level of runtime texture manipulation
+                        available in Unity and other 3D engines since that is
+                        really key to configuration and is it fast enough?
+                    </li>
+                    <li>
+                        Any limitations with consuming our KLIC Photo API's
+                        (memory, performance) since that is crucial to any
+                        solution?
+                    </li>
+                </ul>
+            </section>
+
+            <section class="my-20">
+                <h2 class="text-2xl font-semibold mb-1">Summary</h2>
+                <hr class="mb-4 border-zinc-600" />
+                <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
+                    My initial goal was to just build a Virtual Art gallery from
+                    your Lifepics photo albums but this quickly turned into more
+                    than that. This app begins by generating a Virtual Reality
+                    art gallery based on photos dynamically retrieved from your
+                    KLIC Photo Albums via the KLIC Photo (Lifepics) API. You can
+                    actually walk through the gallery using positional tracking
+                    and there is some background ambient noise from the National
+                    Art Gallery in London so it really feels like you are in a
+                    gallery/museum. The gallery is randomly generated each time
+                    you come in to keep it fresh.
+                </p>
+                <div class="my-8 flex flex-col items-center">
+                    <img
+                        src="/images/vr-poc-unity-editor.png"
+                        alt="Unity Editor Screenshot showing the dynamic art gallery"
+                        class="rounded-lg shadow-md max-w-full h-auto"
+                    />
+                    <p class="text-sm text-zinc-500 mt-2 text-center">
+                        Unity Screenshot - Dynamic art gallery is fresh each
+                        time and roomscale (Unity editor pictured)
+                    </p>
+                </div>
+                <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
+                    It also has a dynamic product generator that will create a
+                    personalized photo product (coffee mug) you can hold,
+                    examine, play with and purchase right within VR based on the
+                    photos from your photo library! Doing this requires
+                    real-time manipulation of the base texture for the mug to
+                    inject a photo correctly and get it to match what will be
+                    produced. I am not very good at creating 3D models but I
+                    found a coffee mug asset that has a photo area with an
+                    aspect ratio very close to our Lifepics 11 oz mug. I was
+                    able to tweak this so it matched and it absolutely matches
+                    production (I verified this in MediaClip). This is very
+                    doable as long as the model created follows some guidelines
+                    in how the UV map is created (more on that later).
+                </p>
+                <div class="my-8 flex flex-col items-center">
+                    <img
+                        src="/images/vr-poc-menu.gif"
+                        alt="Login to KLIC Photo to generate a gallery from your photo albums"
+                        class="rounded-lg shadow-md max-w-full h-auto"
+                    />
+                    <p class="text-sm text-zinc-500 mt-2 text-center">
+                        Login to KLIC Photo to generate a gallery from your
+                        photo albums
+                    </p>
+                </div>
+                <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
+                    Buying the product is as simple as placing it on the
+                    shopping cart pad. It detects a generated product and allows
+                    you to check out with your default shipping address in
+                    Lifepics. Similar to the Alexa Skill prototype I created a
+                    few years ago, if you want to ship to a different address
+                    instead you can simply add the configured item to your cart
+                    and you can complete checkout on your computer or phone.
+                    This is thanks to the fact that KLIC Photo is an
+                    omni-channel ecommerce system.
+                </p>
+                <div class="my-8 flex flex-col items-center">
+                    <img
+                        src="/images/vr-poc-final.gif"
+                        alt="Demonstration of the product purchase process"
+                        class="rounded-lg shadow-md max-w-full h-auto"
+                    />
+                    <p class="text-sm text-zinc-500 mt-2 text-center">
+                        Demonstration of the product purchase process
+                    </p>
+                </div>
+                <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
+                    I also started creating the beginning of a game that
+                    demonstrates the capabilities of Unity (and other 3D
+                    engines) to manipulate textures. Essentially, I randomly
+                    pick a photo from your album and make four cubes out of the
+                    photo which you have to put together as fast as you can to
+                    form the original photo. This needs some additional
+                    development before it is complete but the idea was to try
+                    doing some additional texture manipulation in creating other
+                    objects including crop, scale and slice.
+                </p>
+                <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
+                    This looks SO much better in the actual headset versus what
+                    I can show you in a video or screenshot, but if you have
+                    played with a newer 6DOF VR device before you will get the
+                    idea. The gallery canvases actually look really great. It is
+                    neat seeing your photos enlarged in a "real" space and being
+                    able to pick up, play with, closely examine and order an
+                    actual product with full positional tracking. I spent a lot
+                    of time trying to make the most of the hardware so the
+                    canvas art and product look very clear up close. Definitely
+                    good enough to decide to buy the product!
+                </p>
+            </section>
+
+            <section class="my-20">
+                <h2 class="text-2xl font-semibold mb-1">History</h2>
+                <hr class="mb-4 border-zinc-600" />
+                <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
+                    This picks up from the iOS CVS AR prototype I did a couple
+                    of years ago for Lifepics but this is in pure VR. Taylor
+                    already does some VR stuff, but appears to have been
+                    restricted to 3DOF so far. This is probably due largely to
+                    the fact that there hasn't really been an affordable 6DOF
+                    wireless VR solution that did not require a monster PC. That
+                    changed last month with the release of the Oculus Quest and
+                    it opens up a lot of opportunities (they are selling like
+                    hotcakes). There are a few things that differentiate this VR
+                    demo from others I have seen here at Taylor:
+                </p>
+                <ul class="list-disc pl-5 text-zinc-400 leading-8 text-lg">
+                    <li>
+                        Rather than just looking at preconfigured products, you
+                        are configuring/creating a product dynamically based on
+                        user assets real-time.
+                    </li>
+                    <li>
+                        You can actually add the product to your KLIC Photo cart
+                        and complete purchase right within VR thanks to API
+                        integration.
+                    </li>
+                    <li>
+                        This uses complete positional tracking so you can grab,
+                        play with, examine, stack and even throw the actual
+                        product you built rather than being limited to gaze
+                        selection with 3DOF VR. This allows a much more
+                        immersive experience where you can be more confident
+                        about what you are buying.
+                    </li>
+                </ul>
+                <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
+                    3DOF is kind of disappointing to be honest, but with 6DOF
+                    you can completely move around as you would in the real
+                    world and actually walk around a room, grab and pick up
+                    objects, bend down, etc. The art gallery is a little too
+                    large to find a space within the limits of room space for
+                    this device, but you can traverse some of the gallery simply
+                    by walking without resorting to the joysticks. The gallery
+                    scene is about 7×7 meters but it does not REQUIRE a large
+                    space to use.
+                </p>
+            </section>
+
+            <section class="my-20">
+                <h2 class="text-2xl font-semibold mb-1">Technical Notes</h2>
+                <hr class="mb-4 border-zinc-600" />
+                <div class="my-8 flex flex-col items-center">
+                    <img
+                        src="/images/vr-poc-technical.png"
+                        alt="Technical diagram showing the implementation"
+                        class="rounded-lg shadow-md max-w-full h-auto"
+                    />
+                    <p class="text-sm text-zinc-500 mt-2 text-center">
+                        Technical implementation diagram
+                    </p>
+                </div>
+                <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
+                    I built this using Unity and while it is targeted towards an
+                    Android platform (Oculus Quest), it could be retargeted to a
+                    different platform like the Vive or the Rift that also
+                    support 6DOF. Within Unity, I am using C# code to consume
+                    the API and do all the dynamic generation of art/models. For
+                    some things like network calls, I recommend using the Unity
+                    classes versus .NET. This makes porting the app to other
+                    platforms easier (some may not support .NET networking stuff
+                    for example). The canvases themselves are adjusted realtime
+                    based on the aspect ratio of the artwork and available wall
+                    space and are created using QUADS but those could easily be
+                    3D models of canvas prints we sell. That was just too easy,
+                    I wanted a product with that was truly three dimensional
+                    that offered a challenge. The product model (coffee mug) is
+                    dynamically created based on adjusting UV Maps of the
+                    surface area where the personalized photo appears. This
+                    involves a LOT of runtime image manipulation. This is
+                    something that probably hasn't been done in the past at
+                    Taylor, namely creating and adjusting dynamic 3D product
+                    models in VR with textures on-the-fly based on user assets
+                    via realtime API calls.
+                </p>
+                <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
+                    I am making heavy use of light maps (baked lighting) for
+                    performance reasons on the snapdragon processor (I would be
+                    nice to have the latest MacBook Pro to reduce bake
+                    times…hint…hint). The trickiest part of this is finding the
+                    right line between performance and quality which took trial
+                    and error on my part. This includes things like the
+                    resolution of the downloaded image from Lifepics (Lifepics
+                    can adjust on the fly), proper Anisotropic level on
+                    textures, mipmapping, dynamically changing eye resolution
+                    for both eyes and proper disposal of Texture objects which
+                    rapidly eat memory and are not covered by regular garbage
+                    collection. For 6DOF VR to be compelling (and not induce
+                    sickness), frame rate really needs to be solid. This
+                    requires effort rather than just slapping a scene together.
+                </p>
+                <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
+                    I am not a 3D modeler so I utilized assets from the Oculus
+                    Store and edited them as needed. Oddly enough there are
+                    actual VR apps where you can design 3D models in Virtual
+                    Reality itself (see Gravity Sketch).
+                </p>
+                <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
+                    I learned a lot of technical things regarding Unity/Oculus
+                    integration that would be helpful to others.
+                </p>
+            </section>
+        </main>
+        <footer>
+            <FinalSection />
+        </footer>
+    </div>
+</Layout>
