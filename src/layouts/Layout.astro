@@ -14,7 +14,20 @@ const title = Astro.props.title;
 		<title>{title}</title>
 	</head>
 	<body>
-		<slot />	
+		<slot />
+		<script>
+			// Warm up the external app on page load
+			window.addEventListener('load', () => {
+				fetch('https://branchesi-ai.up.railway.app/robots.txt', { 
+					method: 'GET',
+					mode: 'no-cors' // Prevents CORS issues since we don't need the response
+				})
+				.catch(error => {
+					// Silent failure - we don't want to affect user experience
+					console.debug('Warm-up request sent (success/failure ignored)');
+				});
+			});
+		</script>	
 	</body>
 </html>
 
