@@ -1,0 +1,88 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Navbar from "@components/Navbar.astro";
+import ProfileSection from "@components/ProfileSection.astro";
+import AboutSection from "@components/AboutSection.astro";
+import ProjectsSection from "@components/ProjectsSection.astro";
+import SkillsSection from "@components/SkillsSection.astro";
+import FinalSection from "@components/FinalSection.astro";
+---
+
+<Layout title="Forza Dash iOS App">
+  <div
+    class="min-w-[535px] max-w-screen-sm mx-auto py-16 px-8 selection:bg-gray-600 selection:text-white"
+  >
+    <header>
+      <Navbar />
+      <ProfileSection />
+    </header>
+    <main>
+      <section class="my-20">
+        <h2 class="text-2xl font-semibold mb-1">Forza Dash iOS App</h2>
+        <hr class="mb-4 border-zinc-600" />
+        <div class="my-8 flex flex-col items-center">
+          <img
+            src="/images/forza-dash.png"
+            alt="Forza Dash iOS App displaying real-time HUD information"
+            class="rounded-lg shadow-md max-w-full h-auto"
+          />
+          <p class="text-sm text-zinc-500 mt-2 text-center">
+            Forza Dash iOS App displaying real-time HUD information
+          </p>
+        </div>
+        <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
+          In August of 2019, I released an iOS App to display realtime HUD info from Forza Motorsport 7 while you are racing. It has since been removed as I didn't bother to keep it updated, but others have created some you can still find in the app store.
+        </p>
+        <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
+          Forza Motorsport 7 had just released an update that allowed you to send telemetry data to another device real-time. This is done over UDP at 60 frames per second and works with XBOX or PC!
+        </p>
+      </section>
+
+      <section class="my-20">
+        <h2 class="text-2xl font-semibold mb-1">Implementation Details</h2>
+        <hr class="mb-4 border-zinc-600" />
+        <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
+          The data interface was primarily designed for people building motion sleds and the like. It contains lots of data useful to those devices like individual tire slippage, angular velocity, etc. I decided to build a native iOS app that receives this data and allows you to use the app on your phone as a secondary dash. The amount of information I can use that is helpful is limited, but the app did display:
+        </p>
+        <ul class="list-disc pl-5 text-zinc-400 leading-8 text-lg mb-3">
+          <li>Tachometer (RPM)</li>
+          <li>Speedometer</li>
+          <li>Drivetrain (tells you what your car has…AWD, FWD, RWD)</li>
+          <li>Shift light</li>
+        </ul>
+        <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
+          Normally, to determine optimum shift point you have to take a lot of things into consideration including gear ratios but that data is not available, at least not yet. So, I set a threshold of 80% of max RPM for the car you are driving.
+        </p>
+        <div class="my-8 flex flex-col items-center">
+          <iframe
+            width="500"
+            height="281"
+            src="https://www.youtube.com/embed/60bna8ZRhoA"
+            title="Forza Dash iOS"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+            class="rounded-lg shadow-md"></iframe>
+          <p class="text-sm text-zinc-500 mt-2 text-center">
+            Video demonstration of Forza Dash iOS App
+          </p>
+        </div>
+      </section>
+
+      <section class="my-20">
+        <h2 class="text-2xl font-semibold mb-1">Technical Details</h2>
+        <hr class="mb-4 border-zinc-600" />
+        <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
+          I wrote this app in Objective-C. I haven't worked with raw UDP packets since the Quake days! It is amazing how fast everything is processed. There is no visible lag as you can see in the video above which is me playing on an XBOX that is streaming data to my iPhone app.
+        </p>
+        <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
+          This was pretty easy..I simply defined a STRUCT for the Forza UDP datagram and popped the data packet into that to pick out what I needed. Hardest part was figuring out what unit of measure is used for velocity values. The documentation does not tell you, but I finally figured out it was meters per second.
+        </p>
+      </section>
+    </main>
+    <footer>
+      <FinalSection />
+    </footer>
+  </div>
+</Layout>

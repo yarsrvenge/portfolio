@@ -1,63 +1,104 @@
 ---
-import ProjectCard from '@components/ProjectCard.astro'
-import Typescript from '@assets/icons/typescript.astro';
-import React from '@assets/icons/react.astro';
-import Supabase from '@assets/icons/supabase.astro';
-import Tailwind from '@assets/icons/tailwind.astro';
-import Docker from '@assets/icons/docker.astro';
-import Swift from '@assets/icons/swift.astro';
-import Pyton from '@assets/icons/python.astro';
-import Streamlit from '@assets/icons/streamlit.astro';
-import CSharp from '@assets/icons/csharp.astro';
-import Unity from '@assets/icons/unity.astro';
-import CLang from '@assets/icons/c.astro';
-import Xcode from '@assets/icons/xcode.astro';
-import Objc from '@assets/icons/objc.astro';
-import Linux from '@assets/icons/linux.astro';
+import ProjectCard from "@components/ProjectCard.astro";
+import Typescript from "@assets/icons/typescript.astro";
+import React from "@assets/icons/react.astro";
+import Supabase from "@assets/icons/supabase.astro";
+import Tailwind from "@assets/icons/tailwind.astro";
+import Docker from "@assets/icons/docker.astro";
+import Swift from "@assets/icons/swift.astro";
+import Pyton from "@assets/icons/python.astro";
+import Streamlit from "@assets/icons/streamlit.astro";
+import CSharp from "@assets/icons/csharp.astro";
+import Unity from "@assets/icons/unity.astro";
+import CLang from "@assets/icons/c.astro";
+import Xcode from "@assets/icons/xcode.astro";
+import Objc from "@assets/icons/objc.astro";
+import Linux from "@assets/icons/linux.astro";
 ---
 
 <section class="my-20">
   <h2 class="text-2xl font-semibold mb-2">Active Projects</h2>
-  <hr class="mb-6 border-zinc-600">
+  <hr class="mb-6 border-zinc-600" />
 
-  <ProjectCard projectTitle="Retro Game Bot" projectDescription="This is a multi-agent custom AI I am creating using the Pydantic AI python library.  Coming soon!" projectLink="/" image="/images/retrobot.png">
+  <ProjectCard
+    projectTitle="Retro Game Bot"
+    projectDescription="This is a multi-agent custom AI I am creating using the Pydantic AI python library.  Coming soon!"
+    projectLink="/"
+    image="/images/retrobot.png"
+  >
     <Pyton />
   </ProjectCard>
 
-
-  <ProjectCard projectTitle="AI" projectDescription="This is a custom AI instance that uses open source LLM's.  This allows me to test various models across different use cases as well as run a private instance locally that will allow LLM use even with no internet access.  Private Area: Requires a login to access." projectLink="https://branchesi-ai.up.railway.app" image="/images/ai.png">
+  <ProjectCard
+    projectTitle="AI"
+    projectDescription="This is a custom AI instance that uses open source LLM's.  This allows me to test various models across different use cases as well as run a private instance locally that will allow LLM use even with no internet access.  Private Area: Requires a login to access."
+    projectLink="https://branchesi-ai.up.railway.app"
+    image="/images/ai.png"
+  >
     <React />
     <Docker />
     <Pyton />
   </ProjectCard>
 
-  <ProjectCard projectTitle="Home Arcade" projectDescription="This is a Legends Ultimate Arcade system that I gutted and modified with a Batocera Linux PC customized with hundreds of arcade and video games." projectLink="/arcade" image="/images/arcadeicon.png">
+  <ProjectCard
+    projectTitle="Home Arcade"
+    projectDescription="This is a Legends Ultimate Arcade system that I gutted and modified with a Batocera Linux PC customized with hundreds of arcade and video games."
+    projectLink="/arcade"
+    image="/images/arcadeicon.png"
+  >
     <Linux />
   </ProjectCard>
-
 </section>
 
 <section class="my-20">
   <h2 class="text-2xl font-semibold mb-2">Past Projects</h2>
-  <hr class="mb-6 border-zinc-600">
+  <hr class="mb-6 border-zinc-600" />
 
-  <ProjectCard projectTitle="Uberlaufer" projectDescription="Uberlaufer is a Virtual Reality game I wrote for PC-based VR headsets.  It's a roguelike, procedurally generated dungeon crawler set in WW2 and is available on Steam." projectLink="https://www.uberlaufer.com" image="/images/uberlaufer.png">
+  <ProjectCard
+    projectTitle="Uberlaufer"
+    projectDescription="Uberlaufer is a Virtual Reality game I wrote for PC-based VR headsets.  It's a roguelike, procedurally generated dungeon crawler set in WW2 and is available on Steam."
+    projectLink="https://www.uberlaufer.com"
+    image="/images/uberlaufer.png"
+  >
     <Unity />
     <CSharp />
   </ProjectCard>
 
-  <ProjectCard projectTitle="Virtual Reality POC" projectDescription="A Virtual Reality proof-of-concept built with Unity that creates a dynamic art gallery from photo albums and allows product configuration in VR." projectLink="/vr-poc" image="/images/vr-poc.png">
-    <Unity />
-  </ProjectCard>
-  
-  <ProjectCard projectTitle="Alexa Astronomy Skill" projectDescription="An Alexa app that allowed users to plan astronomical viewing sessions based on Kepler's Laws of Planetary Motion." projectLink="/skygaze" image="/images/skygazeicon.png">
+  <ProjectCard
+    projectTitle="Virtual Reality POC"
+    projectDescription="A Virtual Reality proof-of-concept built with Unity that creates a dynamic art gallery from photo albums and allows product configuration in VR."
+    projectLink="/vr-poc"
+    image="/images/vr-poc.png"
+  >
     <Unity />
   </ProjectCard>
 
-  <ProjectCard projectTitle="Doom for Apple TV" projectDescription="A fork of Doom I created for the AppleTV.  This was the first open source code for an Apple TV version." projectLink="/doom" image="/images/doom.png">
+  <ProjectCard
+    projectTitle="Forza Dash iOS App"
+    projectDescription="An iOS App that displays realtime HUD info from Forza Motorsport 7 while racing, using UDP data at 60 frames per second."
+    projectLink="/forza-dash"
+    image="/images/forza-dash-icon.png"
+  >
+    <Objc />
+  </ProjectCard>
+
+  <ProjectCard
+    projectTitle="Alexa Astronomy Skill"
+    projectDescription="An Alexa app that allowed users to plan astronomical viewing sessions based on Kepler's Laws of Planetary Motion."
+    projectLink="/skygaze"
+    image="/images/skygazeicon.png"
+  >
+    <Unity />
+  </ProjectCard>
+
+  <ProjectCard
+    projectTitle="Doom for Apple TV"
+    projectDescription="A fork of Doom I created for the AppleTV.  This was the first open source code for an Apple TV version."
+    projectLink="/doom"
+    image="/images/doom.png"
+  >
     <Xcode />
     <Objc />
     <CLang />
   </ProjectCard>
-
 </section>
