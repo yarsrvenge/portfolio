@@ -1,0 +1,54 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Navbar from "@components/Navbar.astro";
+import ProfileSection from "@components/ProfileSection.astro";
+import FinalSection from "@components/FinalSection.astro";
+import ProjectCard from "@components/ProjectCard.astro";
+---
+
+<Layout title="My Favorite Online Tools">
+  <div
+    class="min-w-[535px] max-w-screen-sm mx-auto py-16 px-8 selection:bg-gray-600 selection:text-white"
+  >
+    <header>
+      <Navbar />
+      <ProfileSection />
+    </header>
+    <main>
+      <section class="my-20">
+        <h2 class="text-2xl font-semibold mb-1">My Favorite Online Tools</h2>
+        <hr class="mb-4 border-zinc-600" />
+        <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
+          Here are some of my favorite online tools and platforms that I use regularly. These tools help me track my hobbies, collections, and creative projects.
+        </p>
+      </section>
+
+      <ProjectCard
+        projectTitle="Discogs"
+        projectDescription="Discogs is an online tool to inventory, buy, sell and research vinyl records. This links to my record collection."
+        projectLink="https://www.discogs.com/user/gus.branchesi"
+        image="/images/discogs.png"
+      >
+      </ProjectCard>
+
+      <ProjectCard
+        projectTitle="Retroachievements"
+        projectDescription="Retroachievements is a platform that tracks gameplay on retro games and your scores/achievements. This link brings you to my profile where you can see my recent activity."
+        projectLink="https://retroachievements.org/user/Yarsrvenge"
+        image="/images/retroachievements.png"
+      >
+      </ProjectCard>
+
+      <ProjectCard
+        projectTitle="Makerworld"
+        projectDescription="Makerworld is an online site for 3D print models. This links to my portfolio there."
+        projectLink="https://makerworld.com/en/@Yarsrvenge"
+        image="/images/makerworld.png"
+      >
+      </ProjectCard>
+    </main>
+    <footer>
+      <FinalSection />
+    </footer>
+  </div>
+</Layout>
