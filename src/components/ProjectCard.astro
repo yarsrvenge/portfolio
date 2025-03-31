@@ -1,8 +1,5 @@
 ---
-const projectTitle = Astro.props.projectTitle;
-const projectDescription = Astro.props.projectDescription;
-const projectLink = Astro.props.projectLink;
-const image = Astro.props.image;
+const { projectTitle, projectDescription, projectLink, image, openInNewTab = false } = Astro.props;
 import ArrowLink from "@assets/icons/arrow-link.astro";
 ---
 
@@ -11,7 +8,7 @@ import ArrowLink from "@assets/icons/arrow-link.astro";
 }}
 class="border border-zinc-700 bg-zinc-900 bg-opacity-40 p-8 rounded-lg flex flex-col-reverse md:flex-row justify-between mb-7 shadow-xl">
   <div>
-      <a class="text-xl inline-flex items-center gap-2 hover:opacity-60 transition mb-2" href={projectLink}>
+      <a class="text-xl inline-flex items-center gap-2 hover:opacity-60 transition mb-2" href={projectLink} {...openInNewTab ? { target: "_blank", rel: "noopener noreferrer" } : {}}>
         <h3 class="text-xl font-semibold inline-block">{projectTitle}</h3>
         <span class="text-zinc-400">
           <ArrowLink size="w-5 h-5" />

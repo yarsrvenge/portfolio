@@ -18,7 +18,9 @@ import FinalSection from "@components/FinalSection.astro";
     </header>
     <main>
       <section class="my-20">
-        <h2 class="text-2xl font-semibold mb-1">Building a Multi-Agent AI Assistant for Retro Game Collectors</h2>
+        <h2 class="text-2xl font-semibold mb-1">
+          Building a Multi-Agent AI Assistant for Retro Game Collectors
+        </h2>
         <hr class="mb-4 border-zinc-600" />
         <div class="my-8 flex flex-col items-center">
           <img
@@ -31,8 +33,20 @@ import FinalSection from "@components/FinalSection.astro";
           </p>
         </div>
         <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
-          If you're into collecting old games or emulating classics from your childhood, you know how much information is out there—and how scattered it can be. I'm working on a project that brings all of that together using a multi-agent AI system specifically tailored for retro game enthusiasts.
+          If you're into collecting old games or emulating classics from your
+          childhood, you know how much information is out there—and how
+          scattered it can be. I'm working on a project that brings all of that
+          together using a multi-agent AI system specifically tailored for retro
+          game enthusiasts.
         </p>
+        <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
+          I've been studying multi-agent AI systems over the past several months
+          as I can see a lot of utility even if the larger AI bubble "bursts".
+          This bot is a way of getting some experience with building something from
+          the ground up that will allow me to leverage this architecture for future
+          work projects.
+        </p>
+
       </section>
 
       <section class="my-20">
@@ -43,14 +57,18 @@ import FinalSection from "@components/FinalSection.astro";
         </p>
         <ul class="list-disc pl-8 mb-6 text-zinc-400 leading-8 text-lg">
           <li>Looking up the history and background of a game</li>
-          <li>Estimating market value for cartridges, discs, and complete-in-box (CIB) sets</li>
+          <li>
+            Estimating market value for cartridges, discs, and complete-in-box
+            (CIB) sets
+          </li>
           <li>Finding out how to emulate games on modern systems</li>
           <li>Offering restoration tips for old consoles and cartridges</li>
           <li>Recommending similar games based on your favorites</li>
           <li>Fetching known high scores and speedrun records</li>
         </ul>
         <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
-          Whether you're a seasoned collector, a casual gamer, or someone just getting into ROM hacks and EverDrives, this tool is built to assist.
+          Whether you're a seasoned collector, a casual gamer, or someone just
+          getting into ROM hacks and EverDrives, this tool is built to assist.
         </p>
       </section>
 
@@ -58,28 +76,61 @@ import FinalSection from "@components/FinalSection.astro";
         <h2 class="text-2xl font-semibold mb-1">🧠 Why Multi-Agent AI?</h2>
         <hr class="mb-4 border-zinc-600" />
         <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
-          Multi-agent systems are exactly what they sound like: multiple specialized AI agents, each with a focused area of expertise. Instead of using one big general-purpose model, this approach lets me create purpose-built agents like:
+          Multi-agent systems are exactly what they sound like: multiple
+          specialized AI agents, each with a focused area of expertise. Instead
+          of using one big general-purpose model like ChatGPT, Claude or Gemini
+          this approach lets me create purpose-built agents like:
         </p>
         <ul class="list-disc pl-8 mb-6 text-zinc-400 leading-8 text-lg">
-          <li>A <code class="bg-zinc-800 px-1 rounded">GameHistorianAgent</code> for deep background</li>
-          <li>A <code class="bg-zinc-800 px-1 rounded">MarketPriceAgent</code> for price estimates</li>
-          <li>An <code class="bg-zinc-800 px-1 rounded">EmulationAgent</code> to guide you through setting up games</li>
-          <li>A <code class="bg-zinc-800 px-1 rounded">RestorationAgent</code> for hardware help</li>
-          <li>And even a <code class="bg-zinc-800 px-1 rounded">RecommendationAgent</code> to suggest what to play next</li>
+          <li>
+            A <code class="bg-zinc-800 px-1 rounded">GameHistorianAgent</code> for
+            deep background
+          </li>
+          <li>
+            A <code class="bg-zinc-800 px-1 rounded">MarketPriceAgent</code> for
+            price estimates
+          </li>
+          <li>
+            An <code class="bg-zinc-800 px-1 rounded">EmulationAgent</code> to guide
+            you through setting up games
+          </li>
+          <li>
+            A <code class="bg-zinc-800 px-1 rounded">RestorationAgent</code> for
+            hardware help
+          </li>
+          <li>
+            And even a <code class="bg-zinc-800 px-1 rounded"
+              >RecommendationAgent</code
+            > to suggest what to play next
+          </li>
         </ul>
         <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
-          These agents are orchestrated by a central AI that interprets user queries, figures out which agents are needed, and combines their responses into a final answer. This pattern allows for better scalability, clearer architecture, and more control over the knowledge domains.
+          These agents are orchestrated by a central AI that interprets user
+          queries, figures out which agents are needed, and combines their
+          responses into a final answer. This pattern allows for better
+          scalability, clearer architecture, and more control over the knowledge
+          domains.
         </p>
+        <img
+        src="/images/multiagent.png"
+        alt="Multi-Agent Orchestration"
+        class="rounded-lg shadow-md max-w-full h-auto"
+      />        
       </section>
 
       <section class="my-20">
-        <h2 class="text-2xl font-semibold mb-1">💬 Conversational and Context-Aware</h2>
+        <h2 class="text-2xl font-semibold mb-1">
+          💬 Conversational and Context-Aware
+        </h2>
         <hr class="mb-4 border-zinc-600" />
         <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
           The assistant isn't just a search engine. It can:
         </p>
         <ul class="list-disc pl-8 mb-6 text-zinc-400 leading-8 text-lg">
-          <li>Ask follow-up questions when a query is unclear (e.g., "Which version of Aladdin—SNES or Genesis?")</li>
+          <li>
+            Ask follow-up questions when a query is unclear (e.g., "Which
+            version of Aladdin—SNES or Genesis?")
+          </li>
           <li>Handle small talk or off-topic questions gracefully</li>
           <li>Adjust recommendations based on the user's stated interests</li>
         </ul>
@@ -89,10 +140,24 @@ import FinalSection from "@components/FinalSection.astro";
         <h2 class="text-2xl font-semibold mb-1">⚙️ Under the Hood</h2>
         <hr class="mb-4 border-zinc-600" />
         <ul class="list-disc pl-8 mb-6 text-zinc-400 leading-8 text-lg">
-          <li>Built using <strong>Pydantic AI</strong> for structured task planning and validation</li>
-          <li>Uses a combination of <strong>OpenAI</strong>, <strong>Mistral</strong>, and <strong>Claude</strong> depending on the agent role</li>
-          <li>Future support for <strong>RAG (Retrieval-Augmented Generation)</strong> to index community wikis, manuals, and pricing data</li>
-          <li>Architecture is modular, so agents can be updated or swapped as needed</li>
+          <li>
+            Built using <strong>Pydantic AI</strong> for structured task planning
+            and validation
+          </li>
+          <li>
+            Uses a combination of <strong>OpenAI</strong>, <strong
+              >Mistral</strong
+            >, and <strong>Claude</strong> depending on the agent role
+          </li>
+          <li>
+            Future support for <strong
+              >RAG (Retrieval-Augmented Generation)</strong
+            > to index community wikis, manuals, and pricing data
+          </li>
+          <li>
+            Architecture is modular, so agents can be updated or swapped as
+            needed
+          </li>
         </ul>
       </section>
 
@@ -100,13 +165,19 @@ import FinalSection from "@components/FinalSection.astro";
         <h2 class="text-2xl font-semibold mb-1">📚 Why It Matters</h2>
         <hr class="mb-4 border-zinc-600" />
         <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
-          This project isn't just about retro games—it's about learning how to build AI systems that collaborate, specialize, and reason together. Multi-agent systems mirror how real teams work: you don't ask one person to do everything—you bring in the right experts for the job.
+          This project isn't just about retro games—it's about learning how to
+          build AI systems that collaborate, specialize, and reason together.
+          Multi-agent systems mirror how real teams work: you don't ask one
+          person to do everything—you bring in the right experts for the job.
         </p>
         <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
-          That's the magic of agentic AI: it's modular, extensible, and far more capable than a single generalist model acting alone.
+          That's the magic of agentic AI: it's modular, extensible, and far more
+          capable than a single generalist model acting alone.
         </p>
         <p class="leading-8 text-lg text-pretty mt-8 text-zinc-400 italic">
-          If you're a fellow retro nerd, AI builder, or just curious about what this looks like in action—stay tuned! More updates soon! I hope to have an initial build by May 2025.
+          If you're a fellow retro nerd, AI builder, or just curious about what
+          this looks like in action—stay tuned! More updates soon! I hope to
+          have an initial build by May 2025.
         </p>
       </section>
     </main>
