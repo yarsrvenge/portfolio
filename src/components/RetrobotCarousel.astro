@@ -1,0 +1,106 @@
+---
+// src/components/RetrobotCarousel.astro
+const images = [
+  { src: "/images/psquadscreen1.webp", alt: "PixelSquad Screenshot 1" },
+  { src: "/images/psquadscreen2.webp", alt: "PixelSquad Screenshot 2" },
+  { src: "/images/psquadscreen3.webp", alt: "PixelSquad Screenshot 3" },
+];
+---
+
+<!-- Swiper -->
+<div class="swiper retrobot-swiper my-12 relative group">
+  <div class="swiper-wrapper">
+    <!-- Slides -->
+    {images.map((image) => (
+      <div class="swiper-slide">
+        <img src={image.src} alt={image.alt} class="w-full h-auto object-cover rounded-lg shadow-md" loading="lazy" />
+      </div>
+    ))}
+  </div>
+  <!-- Add Pagination -->
+  <div class="swiper-pagination"></div>
+
+  <!-- Add Navigation -->
+  <div class="swiper-button-prev absolute top-1/2 left-2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full cursor-pointer opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
+  <div class="swiper-button-next absolute top-1/2 right-2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full cursor-pointer opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
+</div>
+
+<style is:global>
+  /* Import Swiper styles */
+  @import 'swiper/swiper-bundle.css';
+
+  .retrobot-swiper {
+    width: 100%;
+    height: auto; /* Adjust height as needed or let content dictate */
+  }
+
+  .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #111827; /* Match dark background */
+
+    /* Center slide text vertically */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Use contain to show full image without cropping */
+    max-height: 400px; /* Optional: Limit max height */
+  }
+
+  /* Style pagination bullets */
+  .swiper-pagination-bullet {
+    background-color: #9ca3af; /* Gray color for inactive bullets */
+    opacity: 0.7;
+  }
+
+  .swiper-pagination-bullet-active {
+    background-color: #ffffff; /* White color for active bullet */
+    opacity: 1;
+  }
+
+  /* Style navigation buttons */
+  .swiper-button-prev,
+  .swiper-button-next {
+    color: #ffffff; /* White arrows */
+    width: 30px; /* Adjust size */
+    height: 30px;
+  }
+  .swiper-button-prev::after,
+  .swiper-button-next::after {
+    font-size: 16px; /* Adjust arrow size */
+    font-weight: bold;
+  }
+
+</style>
+
+<script>
+  import Swiper from 'swiper';
+  import { Navigation, Pagination } from 'swiper/modules';
+
+  // Initialize Swiper
+  const swiper = new Swiper('.retrobot-swiper', {
+    // Optional parameters
+    modules: [Navigation, Pagination],
+    loop: true, // Enable looping
+    slidesPerView: 1, // Show one slide at a time
+    spaceBetween: 30, // Space between slides
+
+    // If we need pagination
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true, // Allow clicking on pagination bullets
+    },
+
+    // Navigation arrows
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+  });
+</script>

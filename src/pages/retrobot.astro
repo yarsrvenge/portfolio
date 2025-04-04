@@ -6,6 +6,7 @@ import AboutSection from "@components/AboutSection.astro";
 import ProjectsSection from "@components/ProjectsSection.astro";
 import SkillsSection from "@components/SkillsSection.astro";
 import FinalSection from "@components/FinalSection.astro";
+import RetrobotCarousel from "@components/RetrobotCarousel.astro"; // Import the new carousel component
 ---
 
 <Layout title="PixelSquad: Multi-Agent AI Assistant for Retro Game Collectors">
@@ -19,7 +20,7 @@ import FinalSection from "@components/FinalSection.astro";
     <main>
       <section class="my-20">
         <h2 class="text-2xl font-semibold mb-1">
-          Building a Multi-Agent AI Assistant for Retro Game Collectors
+          Pixelsquad: Building a Multi-Agent AI Assistant for Retro Game Collectors
         </h2>
         <hr class="mb-4 border-zinc-600" />
         <div class="my-8 flex flex-col items-center">
@@ -180,6 +181,8 @@ import FinalSection from "@components/FinalSection.astro";
           have an initial build by May 2025.
         </p>
       </section>
+      <!-- Add the carousel component here -->
+      <RetrobotCarousel />
     </main>
     <footer>
       <FinalSection />
