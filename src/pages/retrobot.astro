@@ -29,16 +29,26 @@ import RetrobotCarousel from "@components/RetrobotCarousel.astro"; // Import the
             alt="Retro Game Bot AI Assistant"
             class="rounded-lg shadow-md max-w-full h-auto"
           />
-          <p class="text-sm text-zinc-500 mt-2 text-center">
-            PixelSquad
-          </p>
+          <p class="text-sm text-zinc-500 mt-2 text-center">PixelSquad</p>
         </div>
         <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
-          If you've ever found yourself wondering about the history of a weird NES game, trying to figure out what it's worth today, or even looking for the best way to emulate it—PixelSquad has your back. Pixelsquad is a small project I created to better understand <em>multi-agent AI systems</em> by building one from scratch. Read on to understand more about what multi-agent AI is and how it can be applied across a number of industries, including print.
+          If you've ever found yourself wondering about the history of a weird
+          NES game, trying to figure out what it's worth today, or even looking
+          for the best way to emulate it—PixelSquad has your back. Pixelsquad is
+          a small project I created to better understand <em
+            >multi-agent AI systems</em
+          > by building one from scratch. Read on to understand more about what multi-agent
+          AI is and how it can be applied across a number of industries, including
+          print.
         </p>
         <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
           You can check out an early version of PixelSquad at:<br />
-          <a href="https://pixelsquad.branchesi.tech" class="text-blue-400 hover:underline">https://pixelsquad.branchesi.tech</a>
+          <a
+            href="https://pixelsquad.branchesi.tech"
+            target="_blank"
+            class="text-blue-400 hover:underline"
+            >https://pixelsquad.branchesi.tech</a
+          >
         </p>
       </section>
 
@@ -46,19 +56,36 @@ import RetrobotCarousel from "@components/RetrobotCarousel.astro"; // Import the
         <h2 class="text-2xl font-semibold mb-1">What's a Multi-Agent AI?</h2>
         <hr class="mb-4 border-zinc-600" />
         <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
-          Imagine a team of digital specialists, each with their own job. One focuses on digging up game history, another checks price trends, another helps you get your emulator running. They all work together behind the scenes to answer your questions. That's the basic idea of a multi-agent system—separate AIs (agents) doing different tasks, all collaborating to get stuff done.
+          Imagine a team of digital specialists, each with their own job. One
+          focuses on digging up game history, another checks price trends,
+          another helps you get your emulator running. They all work together
+          behind the scenes to answer your questions. That's the basic idea of a
+          multi-agent system—separate AIs (agents) doing different tasks, all
+          collaborating to get stuff done.
         </p>
         <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
           Why bother with multiple agents?
         </p>
         <ul class="list-disc pl-8 mb-6 text-zinc-400 leading-8 text-lg">
-          <li><strong>Divide and conquer</strong> – It's faster and cleaner to split up responsibilities.</li>
-          <li><strong>Flexibility</strong> – Each agent can adapt or improve independently.</li>
-          <li><strong>More reliable</strong> – If one part fails, others can keep going.</li>
-          <li><strong>Specialized smarts</strong> – Agents can be experts in their own areas. Because they are focused on specific areas the quality of their responses is better.</li>
+          <li>
+            <strong>Divide and conquer</strong> – It's faster and cleaner to split
+            up responsibilities.
+          </li>
+          <li>
+            <strong>Flexibility</strong> – Each agent can adapt or improve independently.
+          </li>
+          <li>
+            <strong>More reliable</strong> – If one part fails, others can keep going.
+          </li>
+          <li>
+            <strong>Specialized smarts</strong> – Agents can be experts in their
+            own areas. Because they are focused on specific areas the quality of
+            their responses is better.
+          </li>
         </ul>
         <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
-          These systems are used in everything from robotics to logistics, but PixelSquad brings it to a fun space: retro gaming.
+          These systems are used in everything from robotics to logistics, but
+          PixelSquad brings it to a fun space: retro gaming.
         </p>
       </section>
 
@@ -66,10 +93,19 @@ import RetrobotCarousel from "@components/RetrobotCarousel.astro"; // Import the
         <h2 class="text-2xl font-semibold mb-1">Why This Matters</h2>
         <hr class="mb-4 border-zinc-600" />
         <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
-          Multi-agent systems like this are practical. They let you break down big problems into smaller, manageable parts and get a cleaner, faster experience. PixelSquad shows how that power can be used for something fun, nostalgic, and genuinely helpful.
+          Multi-agent systems like this are practical. They let you break down
+          big problems into smaller, manageable parts and get a cleaner, faster
+          experience. PixelSquad shows how that power can be used for something
+          fun, nostalgic, and genuinely helpful.
         </p>
         <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
-          But the applications go way beyond games. In the print industry, for example, a multi-agent AI system could power an online design studio. One agent could help users customize business cards or signs, another could price out orders in real time based on materials and quantity, and a third could coordinate production scheduling with print machines and operators. Each piece works independently, but together they provide a smooth, responsive experience that scales.
+          But the applications go way beyond games. In the print industry, for
+          example, a multi-agent AI system could power an online design studio.
+          One agent could help users customize business cards or signs, another
+          could price out orders in real time based on materials and quantity,
+          and a third could coordinate production scheduling with print machines
+          and operators. Each piece works independently, but together they
+          provide a smooth, responsive experience that scales.
         </p>
       </section>
 
@@ -77,16 +113,36 @@ import RetrobotCarousel from "@components/RetrobotCarousel.astro"; // Import the
         <h2 class="text-2xl font-semibold mb-1">Architecture</h2>
         <hr class="mb-4 border-zinc-600" />
         <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
-          At a high level, PixelSquad starts with the user typing in a question. That input goes first to the <strong>Interaction Agent</strong>, which acts as the central coordinator. It figures out what kind of request it is (e.g. pricing, history, emulation help) and routes it to the appropriate agent—or multiple agents if needed.
+          At a high level, PixelSquad starts with the user typing in a question.
+          That input goes first to the <strong>Interaction Agent</strong>, which
+          acts as the central coordinator. It figures out what kind of request
+          it is (e.g. pricing, history, emulation help) and routes it to the
+          appropriate agent—or multiple agents if needed.
         </p>
         <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
-          Each <strong>specialized agent</strong>—like the Game Historian Agent, Market Pricing Agent, or Emulation Agent—then does its job independently. These agents don't talk directly to each other but share information back through the Interaction Agent, which merges the responses into a single, coherent answer for the user.
+          Each <strong>specialized agent</strong>—like the Game Historian Agent,
+          Market Pricing Agent, or Emulation Agent—then does its job
+          independently. These agents share information back through the
+          Interaction Agent, which merges the responses into a single, coherent
+          answer for the user. In more advanced multi-agent systems, you could
+          also have the individual agents collaborate with each other.
         </p>
         <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
-          This architecture keeps things clean and modular. Agents can be improved or replaced without affecting the others, and since everything runs asynchronously, it stays responsive even when multiple agents are working at once.
+          This architecture keeps things clean and modular. Agents can be
+          improved or replaced without affecting the others, and since
+          everything runs asynchronously, it stays responsive even when multiple
+          agents are working at once.
         </p>
         <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
-          Each specialized agent, in addition to each own personality and expertise, can use specific AI models that are best for the kind of thinking the agent will do. PixelSquad uses ChatGPT 4o, Claude and various open source models depending on the agent. I source all of the AI models using OpenRouter which makes managing API credits and using all sorts of different models much easier.
+          Each specialized agent, in addition to each own personality and
+          expertise, can use specific AI models that are best for the kind of
+          thinking the agent will do. PixelSquad uses ChatGPT 4o, Claude and
+          various low-cost open source models depending on the task the agent
+          performs. I source all of the AI models using OpenRouter which makes
+          managing API credits and using all sorts of different models much
+          easier. Agents can be setup to take structured data (JSON) as input or
+          return structured output. This can be used to help reduce
+          hallucinations and ensure you get reliable results.
         </p>
         <img
           src="/images/multiagent.png"
@@ -99,15 +155,21 @@ import RetrobotCarousel from "@components/RetrobotCarousel.astro"; // Import the
         <h2 class="text-2xl font-semibold mb-1">So, What is PixelSquad?</h2>
         <hr class="mb-4 border-zinc-600" />
         <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
-          PixelSquad is like your personal retro game concierge. It's a chat-based assistant built with Pydantic AI and a sleek UI using NiceGUI. It can:
+          PixelSquad is like your personal retro game concierge. It's a
+          chat-based assistant built with Pydantic AI and a sleek UI using
+          NiceGUI. It can:
         </p>
         <ul class="list-disc pl-8 mb-6 text-zinc-400 leading-8 text-lg">
           <li>Dig up fun facts and history about classic games</li>
           <li>Tell you what a game is worth in different conditions</li>
-          <li>Give advice on the best ways to emulate those games on modern systems</li>
+          <li>
+            Give advice on the best ways to emulate those games on modern
+            systems
+          </li>
         </ul>
         <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
-          All of that happens because different agents in the background are doing their jobs and sharing what they know.
+          All of that happens because different agents in the background are
+          doing their jobs and sharing what they know.
         </p>
       </section>
 
@@ -118,18 +180,38 @@ import RetrobotCarousel from "@components/RetrobotCarousel.astro"; // Import the
           Here's the tech stack and how things are wired up:
         </p>
         <ul class="list-disc pl-8 mb-6 text-zinc-400 leading-8 text-lg">
-          <li><strong>Pydantic AI</strong> – Handles all the data modeling between agents.</li>
-          <li><strong>NiceGUI</strong> – Makes the user interface actually nice to use.</li>
-          <li><strong>Async Python</strong> – Agents communicate and run in parallel so things stay snappy.</li>
-          <li><strong>Logfire</strong> - Logfire logs all of the agent interactions to allow better debugging</li>
+          <li>
+            <strong>Pydantic AI</strong> – Handles all the data modeling between
+            agents.
+          </li>
+          <li>
+            <strong>NiceGUI</strong> – Makes the user interface actually nice to
+            use.
+          </li>
+          <li>
+            <strong>Async Python</strong> – Agents communicate and run in parallel
+            so things stay snappy.
+          </li>
+          <li>
+            <strong>Logfire</strong> - Logfire logs all of the agent interactions
+            to allow better debugging
+          </li>
         </ul>
         <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
           Each agent handles a specific role:
         </p>
         <ul class="list-disc pl-8 mb-6 text-zinc-400 leading-8 text-lg">
-          <li><strong>Game Historian Agent</strong> – Finds game histories and trivia</li>
-          <li><strong>Market Pricing Agent</strong> – Looks up current values based on condition using real-time data from pricecharting.com and eBay</li>
-          <li><strong>Emulation Agent</strong> – Offers emulator suggestions and setup tips</li>
+          <li>
+            <strong>Game Historian Agent</strong> – Finds game histories and trivia
+          </li>
+          <li>
+            <strong>Market Pricing Agent</strong> – Looks up current values based
+            on condition using real-time data from pricecharting.com and eBay
+          </li>
+          <li>
+            <strong>Emulation Agent</strong> – Offers emulator suggestions and setup
+            tips
+          </li>
         </ul>
       </section>
 
@@ -137,13 +219,23 @@ import RetrobotCarousel from "@components/RetrobotCarousel.astro"; // Import the
         <h2 class="text-2xl font-semibold mb-1">What's Next / Limitations</h2>
         <hr class="mb-4 border-zinc-600" />
         <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
-          PixelSquad does not support images as inputs or outputs for cost reasons. I've also architected the app to keep the discussions related to video games to prevent abuse of this free agent. This is an early version, there are bugs :)
+          PixelSquad does not support images as inputs or outputs for cost
+          reasons. I've also architected the app to keep the discussions related
+          to video games to prevent abuse of this free agent. This is an early
+          version, there are bugs :)
         </p>
         <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
-          I will be adding additional specialized agents soon. If you have specific ideas on what would be helpful as a retro game collector, shoot an e-mail with your feedback to <a href="mailto:gus.branchesi@gmail.com" class="text-blue-400 hover:underline">gus.branchesi@gmail.com</a>.
+          I will be adding additional specialized agents soon. If you have
+          specific ideas on what would be helpful as a retro game collector,
+          shoot an e-mail with your feedback to <a
+            href="mailto:gus.branchesi@gmail.com"
+            class="text-blue-400 hover:underline">gus.branchesi@gmail.com</a
+          >.
         </p>
         <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
-          Multi-agent AI isn't just for robots and stock trading. Sometimes it's just about helping you find out if that Game Boy cartridge in your drawer is worth something—or worth playing again.
+          Multi-agent AI isn't just for robots and stock trading. Sometimes it's
+          just about helping you find out if that Game Boy cartridge in your
+          drawer is worth something—or worth playing again.
         </p>
       </section>
       <!-- Add the carousel component here -->
