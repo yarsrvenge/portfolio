@@ -113,15 +113,14 @@ import RetrobotCarousel from "@components/RetrobotCarousel.astro"; // Import the
         <h2 class="text-2xl font-semibold mb-1">Architecture</h2>
         <hr class="mb-4 border-zinc-600" />
         <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
-          At a high level, PixelSquad starts with the user typing in a question.
-          That input goes first to the <strong>Interaction Agent</strong>, which
-          acts as the central coordinator. It figures out what kind of request
-          it is (e.g. pricing, history, emulation help) and routes it to the
-          appropriate agent—or multiple agents if needed.
+          At a high level, PixelSquad starts with the user entering in a game name and system.
+          That input goes first to the <strong>Orchestration Agent</strong>, which
+          acts as the central coordinator. It takes the game information from the user and
+          constructs tasks for each of the AI Expert subagents.
         </p>
         <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
           Each <strong>specialized agent</strong>—like the Game Historian Agent,
-          Market Pricing Agent, or Emulation Agent—then does its job
+          Market Pricing Agent, Leaderboard, or Emulation Agent—then does its job
           independently. These agents share information back through the
           Interaction Agent, which merges the responses into a single, coherent
           answer for the user. In more advanced multi-agent systems, you could
@@ -227,6 +226,9 @@ import RetrobotCarousel from "@components/RetrobotCarousel.astro"; // Import the
             <strong>Emulation Agent</strong> – Offers emulator suggestions and setup
             tips
           </li>
+          <li>
+            <strong>Leaderboard Agent</strong> – Offers information on high scores, achievements and leaderboards using the RetroAchievements API
+          </li>          
         </ul>
       </section>
 
@@ -234,7 +236,7 @@ import RetrobotCarousel from "@components/RetrobotCarousel.astro"; // Import the
         <h2 class="text-2xl font-semibold mb-1">What's Next / Limitations</h2>
         <hr class="mb-4 border-zinc-600" />
         <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
-          PixelSquad does not support images as inputs or outputs for cost
+          PixelSquad does not support images as inputs for cost
           reasons. I've also architected the app to keep the discussions related
           to video games to prevent abuse of this free agent. This is an early
           version, there are bugs :)
