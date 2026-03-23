@@ -1,0 +1,161 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Navbar from "@components/Navbar.astro";
+import ProfileSection from "@components/ProfileSection.astro";
+import FinalSection from "@components/FinalSection.astro";
+import EuclideanVoidCarousel from "@components/EuclideanVoidCarousel.astro";
+---
+
+<Layout title="Euclidean Void: Retro Vector Arcade Space Sim">
+  <div
+    class="min-w-[535px] max-w-screen-sm mx-auto py-16 px-8 selection:bg-gray-600 selection:text-white"
+  >
+    <header>
+      <Navbar />
+      <ProfileSection />
+    </header>
+    <main>
+
+      <section class="my-20">
+        <h2 class="text-2xl font-semibold mb-1">Euclidean Void</h2>
+        <hr class="mb-4 border-zinc-600" />
+        <div class="my-8 flex flex-col items-center">
+          <img
+            src="/images/evhero.webp"
+            alt="Euclidean Void"
+            class="rounded-lg shadow-md max-w-full h-auto"
+          />
+          <p class="text-sm text-zinc-500 mt-2 text-center">Euclidean Void — early gameplay</p>
+        </div>
+        <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
+          Euclidean Void is a game idea I've had for a while. I've always loved the old vector
+          arcade games — <em>Asteroids</em>, <em>Major Havoc</em>, <em>Star Wars</em> — there
+          was something about those crisp glowing lines that felt unlike anything else. Games
+          like Geometry Wars made attempts to recapture that spirit in a modern context, but
+          they were strictly arcade games and not particularly deep.
+        </p>
+        <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
+          I want something that has that same clean aesthetic but gives you
+          a whole universe to get lost in.
+        </p>
+      </section>
+
+      <section class="my-20">
+        <h2 class="text-2xl font-semibold mb-1">The Vision</h2>
+        <hr class="mb-4 border-zinc-600" />
+        <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
+          Games like <em>Elite Dangerous</em> offer a complete 3D space simulation with mechanics
+          for exploration, mining, combat, and trade — a genuinely deep experience. The idea
+          behind Euclidean Void is to combine that kind of depth with a simpler vector graphics
+          approach: a crisp, clean retro look that strips away the visual noise of a full 3D
+          engine and lets the gameplay breathe a little.
+        </p>
+        <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
+          Think Elite Dangerous, but rendered in the style of a 1980s arcade cabinet. The
+          aesthetic isn't a limitation — it's part of what makes it feel distinct.
+        </p>
+      </section>
+
+      <section class="my-20">
+        <h2 class="text-2xl font-semibold mb-1">The Engine</h2>
+        <hr class="mb-4 border-zinc-600" />
+        <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
+          After seeing games like <em>Utopia Must Fall</em> that managed to authentically
+          capture the vector feel in a modern context, I researched how to recreate it and
+          landed on a WebGL-based approach:
+        </p>
+        <ul class="list-disc pl-8 mb-6 text-zinc-400 leading-8 text-lg">
+          <li>
+            <strong>WebGL line renderer</strong> — draws the world in glowing vector lines,
+            just like the original arcade hardware did with electron beams
+          </li>
+          <li>
+            <strong>GL shaders</strong> — handle special effects like bloom, glow, and
+            distortion without needing a heavy engine
+          </li>
+          <li>
+            <strong>No Unity or Unreal</strong> — lighter, more portable, and easier to
+            iterate on without the overhead of a full 3D engine
+          </li>
+          <li>
+            <strong>Cross-platform by default</strong> — runs in any modern browser, and can
+            be packaged for <strong>Steam via Electron</strong> (which wraps it in a Chromium
+            shell — the player never notices)
+          </li>
+        </ul>
+      </section>
+
+      <section class="my-20">
+        <h2 class="text-2xl font-semibold mb-1">Exploration</h2>
+        <hr class="mb-4 border-zinc-600" />
+        <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
+          The first focus has been nailing down the core exploration gameplay. To ground it in
+          reality, I started with nearly <strong>10,000 real stars</strong> close to Earth and
+          procedurally generated a unique system for each one. Planet generation is informed
+          by current astrogeology knowledge — so the types of worlds you find actually reflect
+          what science suggests you'd find around a given star type.
+        </p>
+        <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
+          Each system can contain different planet types:
+        </p>
+        <ul class="list-disc pl-8 mb-6 text-zinc-400 leading-8 text-lg">
+          <li>Rocky worlds</li>
+          <li>Water worlds</li>
+          <li>Terran (Earth-like) planets</li>
+          <li>Gas giants</li>
+          <li>And more — each with distinct atmosphere types and surface resources</li>
+        </ul>
+      </section>
+
+      <section class="my-20">
+        <h2 class="text-2xl font-semibold mb-1">The World</h2>
+        <hr class="mb-4 border-zinc-600" />
+        <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
+          Within 85 light years of Earth, systems have space stations and NPC traffic — a
+          relatively busy, familiar stretch of the galaxy. As you venture further into the
+          black, the universe gets stranger and less predictable. There are things out there.
+        </p>
+        <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
+          Missions and narratives are also planned — giving players reasons to travel and
+          things to care about beyond just cataloguing stars.
+        </p>
+        <div class="my-8 flex flex-col items-center">
+          <video
+            src="/video/ev.mp4"
+            controls
+            class="rounded-lg shadow-md max-w-full h-auto"
+          ></video>
+          <p class="text-sm text-zinc-500 mt-2 text-center">Euclidean Void — gameplay footage</p>
+        </div>
+      </section>
+
+      <section class="my-20">
+        <h2 class="text-2xl font-semibold mb-1">What's Next</h2>
+        <hr class="mb-4 border-zinc-600" />
+        <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
+          If you've played <em>Endless Sky</em>, Euclidean Void will feel familiar in concept
+          but the goal is to make the exploration more immersive and to better represent the
+          true scale of space. The vector aesthetic helps with this: it strips things down to
+          their essence and lets the emptiness of deep space actually feel empty.
+        </p>
+        <p class="leading-8 text-lg text-pretty mb-3 text-zinc-400">
+          I am only in the prototyping phase but planned additions include:
+        </p>
+        <ul class="list-disc pl-8 mb-6 text-zinc-400 leading-8 text-lg">
+          <li>Missions and branching narratives</li>
+          <li>NPC factions and traffic throughout the known systems</li>
+          <li>Mining, trade, and combat mechanics</li>
+          <li>Unique encounters in deep space beyond 80 light years</li>
+          <li>Steam release via Electron packaging</li>
+        </ul>
+      </section>
+
+      <!-- PLACEHOLDER: Replace ev-screenshot1/2/3.webp in /public/images/ with real screenshots -->
+      <EuclideanVoidCarousel />
+
+    </main>
+    <footer>
+      <FinalSection />
+    </footer>
+  </div>
+</Layout>

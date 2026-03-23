@@ -1,0 +1,57 @@
+---
+// src/components/EuclideanVoidCarousel.astro
+const images = [
+  { src: "/images/ev-screenshot1.webp", alt: "Euclidean Void Screenshot 1" },
+  { src: "/images/ev-screenshot2.webp", alt: "Euclidean Void Screenshot 2" },
+  { src: "/images/ev-screenshot3.webp", alt: "Euclidean Void Screenshot 3" },
+  { src: "/images/ev-screenshot4.webp", alt: "Euclidean Void Screenshot 4" },
+];
+---
+
+<!-- Swiper -->
+<div class="swiper ev-swiper my-12 relative group">
+  <div class="swiper-wrapper">
+    <!-- Slides -->
+    {images.map((image) => (
+      <div class="swiper-slide">
+        <img src={image.src} alt={image.alt} class="w-full h-auto object-cover rounded-lg shadow-md" loading="lazy" />
+      </div>
+    ))}
+  </div>
+  <!-- Add Pagination -->
+  <div class="swiper-pagination"></div>
+
+  <!-- Add Navigation -->
+  <div class="swiper-button-prev absolute top-1/2 left-2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full cursor-pointer opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
+  <div class="swiper-button-next absolute top-1/2 right-2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full cursor-pointer opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
+</div>
+
+<style is:global>
+  /* Import Swiper styles */
+  @import 'swiper/swiper-bundle.css';
+
+  .ev-swiper {
+    width: 100%;
+    height: auto;
+  }
+</style>
+
+<script>
+  import Swiper from 'swiper';
+  import { Navigation, Pagination } from 'swiper/modules';
+
+  new Swiper('.ev-swiper', {
+    modules: [Navigation, Pagination],
+    loop: true,
+    slidesPerView: 1,
+    spaceBetween: 30,
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+  });
+</script>
